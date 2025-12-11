@@ -1,0 +1,69 @@
+[project]
+name = "obsidian-rag-cli"
+version = "0.1.0"
+description = "CLI tool for semantic search and RAG on Obsidian vaults using LlamaIndex + ChromaDB"
+authors = [
+    {name = "Your Name", email = "your.email@example.com"}
+]
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+keywords = ["obsidian", "rag", "vector-database", "semantic-search", "llm"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "click>=8.1.0",
+    "rich>=13.0.0",
+    "loguru>=0.7.0",
+    "llama-index>=0.10.0",
+    "llama-index-vector-stores-chroma>=0.1.0",
+    "llama-index-embeddings-huggingface>=0.1.0",
+    "chromadb>=0.4.0",
+    "sentence-transformers>=2.2.0",
+    "toml>=0.10.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+orag = "obsidian_rag.cli.main:cli"
+
+[project.urls]
+Homepage = "https://github.com/avatarye/obsidian-rag-cli"
+Repository = "https://github.com/avatarye/obsidian-rag-cli"
+Issues = "https://github.com/avatarye/obsidian-rag-cli/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["obsidian_rag"]
+
+[tool.black]
+line-length = 100
+target-version = ['py39']
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"

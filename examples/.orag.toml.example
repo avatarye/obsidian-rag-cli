@@ -1,0 +1,20 @@
+# Example vault configuration
+# Copy this to your vault root as .orag.toml
+
+[vault]
+# Vault name (used for vector store collection name)
+name = "my-vault"
+
+# Directories to index (relative paths from vault root)
+# Can be specific directories or "." for entire vault
+dirs = [
+    "Content",
+    "Notes",
+    "Projects",
+    "."
+]
+
+[storage]
+# Vector store location (relative to vault root)
+# This directory will be created automatically
+vector_store = ".vector_store"
