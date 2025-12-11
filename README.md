@@ -13,6 +13,19 @@
 
 ## Installation
 
+### Recommended: pipx (Isolated Global Install)
+
+```bash
+# Install with pipx (recommended - isolated environment)
+pipx install git+https://github.com/avatarye/obsidian-rag-cli.git
+
+# Or install from local directory
+cd obsidian-rag-cli
+pipx install -e .
+```
+
+### Alternative: pip
+
 ```bash
 # Install from GitHub
 pip install git+https://github.com/avatarye/obsidian-rag-cli.git
