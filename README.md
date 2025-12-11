@@ -24,29 +24,28 @@ uv pip install -e .
 
 ## Quick Start
 
-### 1. Create Vault Configuration
+### 1. Initialize Vault Configuration
 
-Create a `.orag.toml` file in your Obsidian vault root:
+```bash
+cd /path/to/your/vault
+orag init
+```
 
-```toml
-[vault]
-name = "my-vault"
+This creates a `.orag.toml` file with sensible defaults. You can also:
 
-# Directories to index (relative paths)
-dirs = [
-    "Content",
-    "Notes",
-    "."
-]
+```bash
+# Custom configuration
+orag init --name my-vault --dirs "Content,Notes,docs"
 
-[storage]
-vector_store = ".vector_store"
+# Interactive mode
+orag init -i
+
+# Or edit .orag.toml manually
 ```
 
 ### 2. Index Your Vault
 
 ```bash
-cd /path/to/your/vault
 orag index
 ```
 
@@ -64,6 +63,27 @@ orag stats
 ```
 
 ## Commands
+
+### `orag init`
+
+Initialize vault configuration with `.orag.toml`.
+
+```bash
+# Auto-detect vault name, use current directory
+orag init
+
+# Custom vault name
+orag init --name my-vault
+
+# Custom directories to index
+orag init --dirs "Content,Notes,docs"
+
+# Interactive mode with prompts
+orag init -i
+
+# Force overwrite existing config
+orag init --force
+```
 
 ### `orag index`
 
