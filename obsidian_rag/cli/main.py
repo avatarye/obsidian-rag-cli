@@ -24,9 +24,14 @@ def cli():
     """
     🔍 Obsidian RAG CLI - Semantic search and RAG for Obsidian vaults.
 
-    Create a .orag.toml file in your vault root to get started.
+    Run 'orag init' in your vault root to get started.
     """
     pass
+
+
+# Import and add init command
+from .commands.init import init as init_command
+cli.add_command(init_command, name="init")
 
 
 @cli.command()
@@ -54,8 +59,7 @@ def index(vault, force, verbose, as_json):
 
     except FileNotFoundError as e:
         print_error(str(e))
-        console.print("\n💡 [dim]Create a .orag.toml file in your vault root with:[/]")
-        console.print('[dim]  [vault]\\n  name = "my-vault"\\n  dirs = ["."][/]\n')
+        console.print("\n💡 [dim]Run 'orag init' to create a vault configuration[/]\n")
         sys.exit(1)
     except Exception as e:
         print_error(f"Error: {e}")
